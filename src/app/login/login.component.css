@@ -1,0 +1,146 @@
+/* Estilos globales */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Contenedor principal */
+.login-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+/* Contenedor del formulario */
+.form-container {
+  flex: 1;
+  padding: 40px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container h2 {
+  color: #0674e2;
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.form-container p {
+  color: #0c080a;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.create-account {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.create-account a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}
+
+/* Contenedor de la imagen */
+.image-container {
+  flex: 1;
+  display: none; /* Oculto en pantallas pequeñas */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilos responsivos */
+@media (max-width: 576px) {
+  /* Ajustes para pantallas muy pequeñas (teléfonos en vertical) */
+  .login-container {
+      flex-direction: column;
+  }
+
+  .form-container {
+      padding: 20px;
+  }
+
+  .form-container h2 {
+      font-size: 28px;
+  }
+
+  .form-container p {
+      font-size: 16px;
+  }
+
+  .create-account a {
+      font-size: 14px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  /* Ajustes para pantallas medianas (tablets en vertical y teléfonos grandes) */
+  .form-container {
+      padding: 30px;
+  }
+
+  .form-container h2 {
+      font-size: 30px;
+  }
+
+  .form-container p {
+      font-size: 17px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Ajustes para pantallas grandes (tablets en horizontal y desktop) */
+  .image-container {
+      display: block;
+  }
+
+  .form-container {
+      padding: 50px;
+  }
+
+  .form-container h2 {
+      font-size: 34px;
+  }
+
+  .form-container p {
+      font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Ajustes para pantallas más grandes (desktops amplios) */
+  .login-container {
+      max-width: 1200px;
+      margin: auto;
+  }
+
+  .form-container h2 {
+      font-size: 36px;
+  }
+
+  .form-container p {
+      font-size: 20px;
+  }
+
+  .create-account a {
+      font-size: 16px;
+  }
+}

@@ -1,0 +1,12 @@
+<nz-layout class="home-layout">
+    <nz-content class="home-content" [ngStyle]="{'background-image': 'url(assets/images/home_image.jpg)', 'background-size': 'cover', 'background-position': 'center'}">
+      <h1 nz-typography>Bienvenido a la Aplicación</h1>
+      <p nz-paragraph>
+        Esta es la página de inicio. Desde aquí puedes acceder a las funcionalidades de la aplicación.
+      </p>
+      <div class="button-group">
+        <button nz-button nzType="primary" nzShape="round" nzSize="large" (click)="goToLogin()">Iniciar Sesión</button>
+        <button nz-button nzType="default" nzShape="round" nzSize="large" (click)="goToRegister()">Registrarse</button>
+      </div>
+    </nz-content>
+  </nz-layout>

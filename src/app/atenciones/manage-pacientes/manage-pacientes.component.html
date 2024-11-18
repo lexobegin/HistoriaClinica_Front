@@ -1,0 +1,225 @@
+<div class="usuarios-container">
+  <h2>Administrar Pacientes</h2>
+
+  <nz-input-group [nzSuffix]="suffixIcon">
+    <input
+      type="text"
+      nz-input
+      placeholder="Buscar por nombre, CI, apellido..."
+      [(ngModel)]="searchTerm"
+      (input)="filterUsuarios()"
+    />
+  </nz-input-group>
+  <ng-template #suffixIcon>
+    <span nz-icon nzType="search"></span>
+  </ng-template>
+
+  <nz-table
+    #filterTable
+    [nzData]="usuariosFiltrados"
+    [nzPageSize]="itemsPerPage"
+    [nzFrontPagination]="false"
+    [nzPageIndex]="currentPage"
+    (nzPageIndexChange)="onPageChange($event)"
+    [nzTotal]="total"
+    [nzShowPagination]="false"
+  >
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>CI</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Género</th>
+        <!-- <th>Estado</th> -->
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="
+          let usuario of usuariosFiltrados
+            | slice
+              : (currentPage - 1) * itemsPerPage
+              : currentPage * itemsPerPage
+        "
+      >
+        <td>{{ usuario.id }}</td>
+        <td>{{ usuario.ci }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido_paterno }}</td>
+        <td>{{ usuario.apellido_materno }}</td>
+        <td>{{ usuario.fecha_nacimiento | date }}</td>
+        <td>{{ usuario.username }}</td>
+        <td>{{ usuario.telefono || "No disponible" }}</td>
+        <td>{{ usuario.genero || "No especificado" }}</td>
+        <!-- <td>{{ usuario.estado || 'Inactivo' }}</td> -->
+        <td>
+          <button
+            nz-button
+            nz-dropdown
+            [nzDropdownMenu]="menu"
+            nzTrigger="click"
+            nzPlacement="bottomRight"
+          >
+            <span nz-icon nzType="more"></span>
+          </button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item (click)="onAntecedentes(usuario)">
+                Antecedentes
+              </li>
+              <li nz-menu-item (click)="abrirModalEdicion(usuario)">Editar</li>
+            </ul>
+          </nz-dropdown-menu>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <!-- Paginación -->
+  <nz-pagination
+    [nzPageIndex]="currentPage"
+    [nzPageSize]="itemsPerPage"
+    [nzTotal]="total"
+    (nzPageIndexChange)="onPageChange($event)"
+    [nzShowSizeChanger]="false"
+  ></nz-pagination>
+</div>
+
+<ng-template #antecedentesModalContent>
+  <div *ngIf="antecedentes && antecedentes.length > 0">
+    <div *ngFor="let antecedente of antecedentes">
+      <p>
+        <strong>Nombre:</strong>{{ antecedente.user.nombre }}
+        {{ antecedente.user.apellido_paterno }}
+        {{ antecedente.user.apellido_materno }}
+      </p>
+      <p>
+        <strong>Fecha:</strong> {{ antecedente.fecha | date : "dd-MM-yyyy" }}
+      </p>
+      <p>
+        <strong>Enfermedades Crónicas:</strong>
+        {{ antecedente.enfermedadesCronicas?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Enfermedades Agudas:</strong>
+        {{ antecedente.enfermedadesAgudas?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Intervenciones Quirúrgicas:</strong>
+        {{ antecedente.intervencionesQuirurgicas?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Alergias:</strong>
+        {{ antecedente.alergias?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Hospitalizaciones Previas:</strong>
+        {{ antecedente.hospitalizacionesPrevias || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Medicamentos de Uso Prolongado:</strong>
+        {{ antecedente.medicamentosUsoLargoPlazo?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Enfermedades Infecciosas:</strong>
+        {{ antecedente.enfermedadesInfecciosas?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Vacunas:</strong>
+        {{ antecedente.vacunas?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Enfermedades Hereditarias:</strong>
+        {{ antecedente.enfermedadesHereditarias?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Suplementos:</strong>
+        {{ antecedente.suplementos?.join(", ") || "Ninguna" }}
+      </p>
+      <p>
+        <strong>Restricciones Alimenticias:</strong>
+        {{ antecedente.restriccionesAlimenticias?.join(", ") || "Ninguna" }}
+      </p>
+    </div>
+  </div>
+  <div *ngIf="!antecedentes || antecedentes.length === 0">
+    <p>No se encontraron antecedentes para este usuario.</p>
+  </div>
+</ng-template>
+
+<!-- Modal de edición de usuario -->
+<!-- Template para el contenido del modal de edición -->
+<ng-template #editUserModalContent>
+  <nz-spin [nzSpinning]="isLoading">
+    <form>
+      <label><strong>Nombre:</strong></label>
+      <input nz-input [(ngModel)]="usuarioEditado.nombre" name="nombre" />
+
+      <label><strong>Apellido Paterno:</strong></label>
+      <input
+        nz-input
+        [(ngModel)]="usuarioEditado.apellido_paterno"
+        name="apellido_paterno"
+      />
+
+      <label><strong>Apellido Materno:</strong></label>
+      <input
+        nz-input
+        [(ngModel)]="usuarioEditado.apellido_materno"
+        name="apellido_materno"
+      />
+
+      <!-- <label><strong>Fecha de Nacimiento:</strong></label>
+      <input
+        nz-input
+        [(ngModel)]="usuarioEditado.fecha_nacimiento"
+        name="fecha_nacimiento"
+      /> -->
+
+      <label><strong>Fecha de Nacimiento:</strong></label>
+      <nz-date-picker
+        nzFormat="dd-MM-yyyy"
+        [(ngModel)]="usuarioEditado.fecha_nacimiento"
+        name="fecha_nacimiento"
+        nzPlaceHolder="Seleccione la fecha de nacimiento"
+        [nzDisabledDate]="disabledDate"
+        nzShowToday="false"
+      ></nz-date-picker>
+
+      <label><strong>Teléfono:</strong></label>
+      <input nz-input [(ngModel)]="usuarioEditado.telefono" name="telefono" />
+
+      <label><strong>Género:</strong></label>
+      <nz-select
+        nzPlaceHolder="Seleccione un género"
+        [(ngModel)]="usuarioEditado.genero"
+        name="genero"
+      >
+        <nz-option nzValue="Masculino" nzLabel="Masculino"></nz-option>
+        <nz-option nzValue="Femenino" nzLabel="Femenino"></nz-option>
+      </nz-select>
+      <label><strong>CI:</strong></label>
+      <input nz-input [(ngModel)]="usuarioEditado.ci" name="ci" />
+
+      <label><strong>Email (username):</strong></label>
+      <input nz-input [(ngModel)]="usuarioEditado.username" name="username" />
+
+      <!-- Botones para acciones -->
+      <div style="margin-top: 20px; text-align: right">
+        <button nz-button nzType="default" (click)="closeEditModal()">
+          Cancelar
+        </button>
+        <button nz-button nzType="primary" (click)="actualizarUsuario()">
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+  </nz-spin>
+</ng-template>

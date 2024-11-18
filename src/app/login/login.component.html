@@ -1,0 +1,32 @@
+<div class="login-container">
+    <div class="form-container">
+      <h2>Iniciar Sesión</h2>
+      <p>Bienvenido, por favor ingrese sus credenciales</p>
+      <form nz-form (ngSubmit)="onLogin()" [nzLayout]="'vertical'">
+        <nz-form-item>
+          <nz-form-label [nzFor]="'username'">Correo Electrónico</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="email" id="username" [(ngModel)]="loginData.username" name="username" required placeholder="Ingrese su correo" />
+          </nz-form-control>
+        </nz-form-item>
+  
+        <nz-form-item>
+          <nz-form-label [nzFor]="'password'">Contraseña</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="password" id="password" [(ngModel)]="loginData.password" name="password" required placeholder="Ingrese su contraseña" />
+          </nz-form-control>
+        </nz-form-item>
+  
+        <button nz-button nzType="primary" nzBlock type="submit">Iniciar Sesión</button>
+      </form>
+  
+      <div class="create-account">
+        <a (click)="goToRegister()">Registrarse</a>
+      </div>
+    </div>
+  
+    <div class="image-container">
+      <img src="assets/images/login-image.jpg" alt="Doctor" />
+    </div>
+  </div>
+  

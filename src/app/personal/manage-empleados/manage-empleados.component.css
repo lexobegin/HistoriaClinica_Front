@@ -1,0 +1,124 @@
+/* Estilos base */
+.empleados-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 300px;
+}
+
+.nz-table {
+  margin-top: 20px;
+}
+
+.nz-button {
+  margin-right: 5px;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas muy pequeñas (teléfonos en vertical) */
+@media (max-width: 576px) {
+  .empleados-container {
+      padding: 15px;
+      margin-top: 15px;
+  }
+
+  h2 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 15px;
+  }
+
+  .actions {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .search-input {
+      width: 100%; /* Ocupa todo el ancho */
+  }
+
+  .nz-table {
+      font-size: 14px;
+      overflow-x: auto; /* Permite desplazamiento horizontal */
+      display: block; /* Hace la tabla desplazable horizontalmente */
+  }
+
+  .nz-button {
+      width: 100%; /* Botones ocupan todo el ancho en pantallas pequeñas */
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+}
+
+/* Pantallas pequeñas a medianas (teléfonos grandes y tablets en vertical) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .empleados-container {
+      padding: 18px;
+      margin-top: 18px;
+  }
+
+  h2 {
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 18px;
+  }
+
+  .actions {
+      flex-direction: row;
+      gap: 15px;
+  }
+
+  .search-input {
+      width: 250px;
+  }
+
+  .nz-table {
+      font-size: 15px;
+  }
+
+  .nz-button {
+      width: auto;
+      margin-right: 5px;
+  }
+}
+
+/* Pantallas medianas a grandes (tablets en horizontal y desktops pequeños) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .empleados-container {
+      padding: 20px;
+      margin-top: 20px;
+  }
+
+  h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+  }
+
+  .search-input {
+      width: 280px;
+  }
+
+  .nz-table {
+      font-size: 16px;
+  }
+
+  .nz-button {
+      width: auto;
+  }
+}

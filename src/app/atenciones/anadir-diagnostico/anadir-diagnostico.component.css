@@ -1,0 +1,26 @@
+.diagnostico-card {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Ajuste para los campos de formulario */
+  .nz-form-control {
+    width: 100%; /* Hacer que los campos ocupen todo el ancho */
+  }
+  
+  /* Aumentar el ancho específico del textarea */
+  textarea {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
+    min-height: 100px; /* Aumenta la altura mínima del campo de texto */
+  }
+  
+  /* Estilos para las acciones */
+  .acciones-diagnostico {
+    margin-top: 20px;
+    text-align: right;
+  }
+  

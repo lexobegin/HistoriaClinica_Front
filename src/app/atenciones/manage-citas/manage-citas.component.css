@@ -1,0 +1,161 @@
+/* Estilos base */
+.citas-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.citas-container h2 {
+    margin-bottom: 20px;
+}
+
+.filters-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+button[nz-button] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.loading-indicator {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #1890ff;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas muy pequeñas (teléfonos en vertical) */
+@media (max-width: 576px) {
+    .citas-container {
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    .citas-container h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .filters-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button[nz-button] {
+        width: 100%; /* Botones ocupan todo el ancho en pantallas pequeñas */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 14px; /* Reducir el tamaño de fuente para pantallas pequeñas */
+        overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
+        display: block; /* Hace la tabla desplazable horizontalmente */
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+    .loading-indicator {
+        font-size: 16px;
+    }
+}
+
+/* Pantallas pequeñas a medianas (teléfonos grandes y tablets en vertical) */
+@media (min-width: 576px) and (max-width: 768px) {
+    .citas-container {
+        padding: 18px;
+        margin-top: 18px;
+    }
+
+    .citas-container h2 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .filters-container {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    button[nz-button] {
+        width: auto;
+    }
+
+    table {
+        font-size: 15px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+    .loading-indicator {
+        font-size: 16px;
+    }
+}
+
+/* Pantallas medianas a grandes (tablets en horizontal y desktops pequeños) */
+@media (min-width: 768px) and (max-width: 992px) {
+    .citas-container {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .citas-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .filters-container {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    button[nz-button] {
+        width: auto;
+    }
+
+    table {
+        font-size: 16px;
+    }
+
+    th,
+    td {
+        padding: 12px;
+    }
+
+    .loading-indicator {
+        font-size: 18px;
+    }
+}

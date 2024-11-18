@@ -1,0 +1,69 @@
+<div>
+    <h2>Buscar Paciente</h2>
+    <nz-input-group [nzSuffix]="suffixButton">
+      <input nz-input placeholder="Nombre del Usuario" [(ngModel)]="username" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+      <button nz-button nzType="primary" (click)="buscarUsuario()">Buscar</button>
+    </ng-template>
+  </div>
+  
+  <!-- Tabla de Usuarios -->
+  <!-- Tabla de Usuarios -->
+<nz-table #userTable [nzData]="users" [nzBordered]="true" *ngIf="users.length > 0">
+  <thead>
+    <tr>
+      <th>Identificador</th>
+      <th>Nombre</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido Materno</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Género</th>
+      <th>Teléfono</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.nombre }}</td>
+      <td>{{ user.apellido_paterno }}</td>
+      <td>{{ user.apellido_materno }}</td>
+      <td>{{ user.fecha_nacimiento | date:'dd-MM-yyyy' }}</td>
+      <td>{{ user.genero }}</td>
+      <td>{{ user.telefono }}</td>
+      <td>
+        <button nz-button nzType="default" (click)="verAntecedentes(user.id)">
+          Ver Antecedente
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<p *ngIf="users.length === 0 && username">No se encontraron resultados para "{{ username }}"</p>
+
+<!-- Modal para mostrar antecedentes en HTML puro -->
+<div *ngIf="isModalVisible" class="modal">
+    <div class="modal-content">
+      <span class="close-button" (click)="closeModal()">×</span>
+      <h3>Antecedentes del Paciente</h3>
+      <div *ngIf="antecedentes">
+        <p><strong>Fecha:</strong> {{ antecedentes.fecha | date: 'dd-MM-yyyy' }}</p>
+        <p><strong>Enfermedades Crónicas:</strong> {{ antecedentes.enfermedadesCronicas?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Enfermedades Agudas:</strong> {{ antecedentes.enfermedadesAgudas?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Intervenciones Quirúrgicas:</strong> {{ antecedentes.intervencionesQuirurgicas?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Alergias:</strong> {{ antecedentes.alergias?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Hospitalizaciones Previas:</strong> {{ antecedentes.hospitalizacionesPrevias || 'Ninguna' }}</p>
+        <p><strong>Medicamentos de Uso Prolongado:</strong> {{ antecedentes.medicamentosUsoLargoPlazo?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Enfermedades Infecciosas:</strong> {{ antecedentes.enfermedadesInfecciosas?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Vacunas:</strong> {{ antecedentes.vacunas?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Enfermedades Hereditarias:</strong> {{ antecedentes.enfermedadesHereditarias?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Suplementos:</strong> {{ antecedentes.suplementos?.join(', ') || 'Ninguna' }}</p>
+        <p><strong>Restricciones Alimenticias:</strong> {{ antecedentes.restriccionesAlimenticias?.join(', ') || 'Ninguna' }}</p>
+      </div>
+      <div *ngIf="!antecedentes">
+        <p>No se encontraron antecedentes para este usuario.</p>
+      </div>
+    </div>
+  </div>

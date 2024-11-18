@@ -1,0 +1,91 @@
+<div class="triaje-container">
+    <h2>Registro de Triaje</h2>
+  
+    <!-- Botón para abrir el modal de creación de triaje -->
+    <button nz-button nzType="primary" (click)="openRegisterModal()">
+      <span nz-icon nzType="plus"></span> Registrar Triaje
+    </button>
+  
+    <!-- Tabla de registros de triaje -->
+    <table>
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Fecha</th>
+          <th>Temperatura</th>
+          <th>Presión Arterial</th>
+          <th>Frecuencia Cardiaca</th>
+          <th>Frecuencia Respiratoria</th>
+          <th>Saturación Oxígeno</th>
+          <th>Peso</th>
+          <th>Altura</th>
+          <th>Síntomas</th>
+          <th>Estado Mental</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let triage of triajesPaginados">
+          <td>{{ triage.user.nombre }}</td>
+          <td>{{ triage.fecha }}</td>
+          <td>{{ triage.temperatura }}</td>
+          <td>{{ triage.presionArterial }}</td>
+          <td>{{ triage.frecuenciaCardiaca }}</td>
+          <td>{{ triage.frecuenciaRespiratoria }}</td>
+          <td>{{ triage.saturacionOxigeno }}</td>
+          <td>{{ triage.peso }}</td>
+          <td>{{ triage.altura }}</td>
+          <td>{{ triage.sintomas }}</td>
+          <td>{{ triage.estadoMental }}</td>    
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Paginación -->
+    <div class="pagination-container">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+    </div>
+  
+    <!-- Modal de Registro de Triaje -->
+    <nz-modal [(nzVisible)]="isModalVisible" [nzTitle]="modalTitle" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <div *nzModalContent>
+        <label>Fecha:</label>
+        <input nz-input type="date" [(ngModel)]="newTriageData.fecha" />
+  
+        <label>Temperatura:</label>
+        <input nz-input type="number" [(ngModel)]="newTriageData.temperatura" placeholder="Temperatura" />
+  
+        <label>Presión Arterial:</label>
+        <input nz-input [(ngModel)]="newTriageData.presionArterial" placeholder="Presión Arterial" />
+  
+        <label>Frecuencia Cardiaca:</label>
+        <input nz-input type="number" [(ngModel)]="newTriageData.frecuenciaCardiaca" placeholder="Frecuencia Cardiaca" />
+  
+        <label>Frecuencia Respiratoria:</label>
+        <input nz-input type="number" [(ngModel)]="newTriageData.frecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" />
+  
+        <label>Saturación de Oxígeno:</label>
+        <input nz-input type="number" [(ngModel)]="newTriageData.saturacionOxigeno" placeholder="Saturación de Oxígeno" />
+  
+        <label>Peso:</label>
+        <input nz-input type="number" [(ngModel)]="newTriageData.peso" placeholder="Peso" />
+  
+        <label>Altura:</label>
+        <input nz-input type="number" [(ngModel)]="newTriageData.altura" placeholder="Altura" />
+  
+        <label>Síntomas:</label>
+        <input nz-input [(ngModel)]="newTriageData.sintomas" placeholder="Síntomas" />
+  
+        <label>Estado Mental:</label>
+        <input nz-input [(ngModel)]="newTriageData.estadoMental" placeholder="Estado Mental" />
+  
+        <label>Paciente:</label>
+        <nz-select [(ngModel)]="newTriageData.user.id" placeholder="Selecciona un paciente" style="width: 100%;">
+          <nz-option *ngFor="let paciente of pacientes" [nzValue]="paciente.id" [nzLabel]="paciente.nombre"></nz-option>
+        </nz-select>
+      </div>
+    </nz-modal>
+  </div>
+  

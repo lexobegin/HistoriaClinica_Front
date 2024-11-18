@@ -1,0 +1,39 @@
+<!-- anadir-diagnostico.component.html -->
+<nz-card nzTitle="Diagnóstico del Paciente" nzBordered="true" class="diagnostico-card">
+  <form nz-form [formGroup]="diagnosticoForm" (ngSubmit)="guardarDiagnostico()">
+    <!-- Tipo de Diagnóstico -->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="tipoDiagnostico">Tipo de Diagnóstico</nz-form-label>
+      <nz-form-control [nzSpan]="18" nzErrorTip="Por favor, selecciona un tipo de diagnóstico">
+        <nz-select formControlName="tipoDiagnostico" id="tipoDiagnostico" nzPlaceHolder="Selecciona el tipo de diagnóstico">
+          <nz-option nzValue="preliminar" nzLabel="Preliminar"></nz-option>
+          <nz-option nzValue="definitivo" nzLabel="Definitivo"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- Síntomas -->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="sintomas">Síntomas</nz-form-label>
+      <nz-form-control [nzSpan]="18" nzErrorTip="Por favor, describe los síntomas">
+        <textarea nz-input formControlName="sintomas" id="sintomas" rows="3" placeholder="Describe los síntomas del paciente"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- Observaciones -->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="observaciones">Observaciones</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <textarea nz-input formControlName="observaciones" id="observaciones" rows="3" placeholder="Añade observaciones adicionales"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- Botones de acción -->
+    <div class="acciones-diagnostico">
+      <button nz-button nzType="primary" [disabled]="!diagnosticoForm.valid">
+        {{ editMode ? 'Actualizar Diagnóstico' : 'Guardar Diagnóstico' }}
+      </button>
+      <button nz-button nzType="default" (click)="limpiarFormulario()" style="margin-left: 8px;">Limpiar</button>
+    </div>
+  </form>
+</nz-card>

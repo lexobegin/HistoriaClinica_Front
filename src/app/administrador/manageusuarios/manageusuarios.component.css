@@ -1,0 +1,111 @@
+/* Estilos base */
+.usuarios-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.nz-input-group {
+  margin-bottom: 20px;
+}
+
+.nz-table {
+  margin-bottom: 20px;
+}
+
+.nz-pagination {
+  text-align: center;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas muy pequeñas (teléfonos en vertical) */
+@media (max-width: 576px) {
+  .usuarios-container {
+      padding: 15px;
+      margin-top: 15px;
+  }
+
+  h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+  }
+
+  .nz-input-group {
+      margin-bottom: 15px;
+  }
+
+  /* Ajustes de la tabla para pantallas pequeñas */
+  .nz-table {
+      font-size: 14px;
+      overflow-x: auto; /* Permite desplazamiento horizontal */
+  }
+
+  /* Ocultar columnas menos importantes */
+  .nz-table th:nth-child(n+3),
+  .nz-table td:nth-child(n+3) {
+      display: none; /* Oculta columnas desde la tercera en adelante */
+  }
+
+  .nz-pagination {
+      font-size: 14px;
+  }
+}
+
+/* Pantallas pequeñas a medianas (teléfonos grandes y tablets en vertical) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .usuarios-container {
+      padding: 18px;
+      margin-top: 18px;
+  }
+
+  h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+      text-align: center;
+  }
+
+  .nz-input-group {
+      margin-bottom: 18px;
+  }
+
+  .nz-table {
+      font-size: 15px;
+      overflow-x: auto;
+  }
+
+  .nz-pagination {
+      font-size: 15px;
+  }
+}
+
+/* Pantallas medianas a grandes (tablets en horizontal y desktops pequeños) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .usuarios-container {
+      padding: 20px;
+      margin-top: 20px;
+  }
+
+  h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+  }
+
+  .nz-input-group {
+      margin-bottom: 20px;
+  }
+
+  .nz-table {
+      font-size: 16px;
+  }
+
+  .nz-pagination {
+      font-size: 16px;
+  }
+}

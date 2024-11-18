@@ -1,0 +1,56 @@
+<div class="atenciones-container">
+  <h2>Atenciones del Médico</h2>
+  <h5>Para realizar consulta el Estado de la cita deber ser " Listo para Consulta " </h5>
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Cargando citas...</p>
+  </div>
+
+  <nz-table *ngIf="!isLoading && citas.length > 0" [nzData]="citas" nzBordered>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Hora Inicio</th>
+        <th>Hora Fin</th>
+        <th>Estado</th>
+        <th>Paciente</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas">
+        <td>{{ cita.id }}</td>
+        <td>{{ cita.fecha }}</td>
+        <td>{{ cita.horaInicio }}</td>
+        <td>{{ cita.horaFin }}</td>
+        <td>{{ cita.estado }}</td>
+        <td>
+          {{ cita.user.nombre }} {{ cita.user.apellido_paterno }}
+          {{ cita.user.apellido_materno }}
+        </td>
+        <td>{{ cita.user.telefono }}</td>
+        <td>
+          <button 
+            *ngIf="cita.estado !== 'finalizado'" 
+            nz-button 
+            nzType="primary" 
+            (click)="abrirMenuConsulta(cita)">
+            Realizar Consulta
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <div *ngIf="!isLoading && citas.length === 0" class="no-citas-message">
+    <p>No tiene citas agendadas</p>
+  </div>
+
+  <!-- Mostrar ConsultaMedicaComponent cuando se selecciona una cita -->
+  <!-- <app-consulta-medica
+    *ngIf="selectedCita"
+    [cita]="selectedCita"
+    (cerrarConsulta)="cerrarMenuConsulta()"
+  ></app-consulta-medica> -->
+</div>

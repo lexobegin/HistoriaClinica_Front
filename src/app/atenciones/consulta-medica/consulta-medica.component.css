@@ -1,0 +1,32 @@
+.consulta-medica-container {
+    padding: 20px;
+  }
+  
+  .datos-paciente {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .herramientas-consulta button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .contenido-dinamico {
+    margin-top: 20px;
+  }
+  
+  .motivo-consulta {
+    margin-top: 15px;
+}
+
+.motivo-consulta textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+    resize: vertical;
+}

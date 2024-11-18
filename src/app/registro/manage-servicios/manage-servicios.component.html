@@ -1,0 +1,74 @@
+<div class="servicios-container">
+    <h2>Gestionar Servicios</h2>
+  
+    <!-- Botón para abrir el modal de creación de servicio -->
+    <button nz-button nzType="primary" (click)="openCreateModal()">
+      <span nz-icon nzType="plus"></span> Crear Servicio
+    </button>
+  
+    <!-- Tabla de servicios -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Descripción</th>
+          <th>Departamento</th>
+          <th>Especialidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicio of serviciosPaginados">
+          <td>{{ servicio.id }}</td>
+          <td>{{ servicio.nombre }}</td>
+          <td>{{ servicio.precio }}</td>
+          <td>{{ servicio.descripcion }}</td>
+          <td>{{ servicio.departamento.nombre }}</td>
+          <td>{{ servicio.especialidad.nombre }}</td>
+          <td>
+            <!-- Botones de acción con iconos -->
+            <button nz-button nzType="default" (click)="openEditModal(servicio)">
+              <span nz-icon nzType="edit"></span>
+            </button>
+            <button nz-button nzType="default" nzDanger (click)="confirmDelete(servicio.id)">
+              <span nz-icon nzType="delete"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Paginación -->
+    <div class="pagination-container">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+    </div>
+  
+    <!-- Modal de Crear/Editar Servicio -->
+    <nz-modal [(nzVisible)]="isModalVisible" [nzTitle]="modalTitle" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <div *nzModalContent>
+        <label>Nombre del servicio:</label>
+        <input nz-input [(ngModel)]="editServicioData.nombre" placeholder="Nombre del servicio" />
+  
+        <label>Precio:</label>
+        <input nz-input type="number" [(ngModel)]="editServicioData.precio" placeholder="Precio del servicio" />
+  
+        <label>Descripción:</label>
+        <input nz-input [(ngModel)]="editServicioData.descripcion" placeholder="Descripción del servicio" />
+  
+        <label>Departamento:</label>
+        <nz-select [(ngModel)]="editServicioData.departamento.id" placeholder="Selecciona un departamento" style="width: 100%;">
+          <nz-option *ngFor="let dept of departamentos" [nzValue]="dept.id" [nzLabel]="dept.nombre"></nz-option>
+        </nz-select>
+  
+        <label>Especialidad:</label>
+        <nz-select [(ngModel)]="editServicioData.especialidad.id" placeholder="Selecciona una especialidad" style="width: 100%;">
+          <nz-option *ngFor="let esp of especialidades" [nzValue]="esp.id" [nzLabel]="esp.nombre"></nz-option>
+        </nz-select>
+      </div>
+    </nz-modal>
+  </div>
+  

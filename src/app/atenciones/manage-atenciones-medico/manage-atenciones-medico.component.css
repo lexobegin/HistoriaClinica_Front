@@ -1,0 +1,21 @@
+/* manage-atenciones-medico.component.css */
+
+.citas-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .citas-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  nz-table {
+    width: 100%;
+  }
+  
+  nz-spin {
+    display: block;
+  }
+  

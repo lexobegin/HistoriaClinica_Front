@@ -1,0 +1,76 @@
+<div class="roles-container">
+  <h2>Gestionar Roles</h2>
+
+  <!-- Crear nuevo rol -->
+  <div class="create-role">
+    <nz-input-group [nzSuffix]="suffixIcon">
+      <input type="text" nz-input placeholder="Nuevo rol" [(ngModel)]="newRoleName" />
+    </nz-input-group>
+    <ng-template #suffixIcon>
+      <span nz-icon nzType="plus"></span>
+    </ng-template>
+    <button nz-button nzType="primary" (click)="createRole()" class="create-btn">
+      <span nz-icon nzType="plus"></span>
+      Crear Rol
+    </button>
+  </div>
+
+  <!-- Tabla de roles con paginación -->
+  <nz-table
+    [nzData]="roles"
+    [nzFrontPagination]="true"
+    [nzPageSize]="pageSize"
+    [(nzPageIndex)]="pageIndex"
+    [nzPaginationPosition]="'bottom'"
+  >
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let role of roles | slice: (pageIndex - 1) * pageSize : pageIndex * pageSize">
+        <td>{{ role.id }}</td>
+        <td *ngIf="editedRole?.id !== role.id">{{ role.nombre }}</td>
+        <td *ngIf="editedRole?.id === role.id">
+          <input nz-input [(ngModel)]="editRoleName" type="text" />
+        </td>
+        <td>
+          <!-- Botones de acción -->
+          <ng-container *ngIf="editedRole?.id !== role.id">
+            <button nz-button nzType="default" (click)="editRole(role)" class="edit-btn">
+              <span nz-icon nzType="edit"></span>
+            </button>
+            <button nz-button nzType="default" nzDanger (click)="confirmDelete(role.id)" class="delete-btn">
+              <span nz-icon nzType="delete"></span>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="editedRole?.id === role.id">
+            <button nz-button nzType="primary" (click)="saveRole()" class="save-btn">
+              <span nz-icon nzType="save"></span>
+            </button>
+            <button nz-button nzType="default" (click)="cancelEdit()" class="cancel-btn">
+              <span nz-icon nzType="close"></span>
+            </button>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<!-- Modal de confirmación para eliminar -->
+<nz-modal
+  [(nzVisible)]="isDeleteModalVisible"
+  nzTitle="Confirmar Eliminación"
+  (nzOnCancel)="handleCancelDelete()"
+  (nzOnOk)="handleOkDelete()"
+  [nzOkText]="'Eliminar'"
+  [nzOkType]="'primary'"
+  [nzCancelText]="'Cancelar'"
+>
+  <p>¿Está seguro de que desea eliminar este rol?</p>
+</nz-modal>
+  

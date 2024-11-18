@@ -1,0 +1,91 @@
+/* Estilos base */
+.permissions-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.permission-item {
+  display: block;
+  margin-bottom: 10px;
+}
+
+button[nz-button] {
+  width: 100%;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas muy pequeñas (teléfonos en vertical) */
+@media (max-width: 576px) {
+  .permissions-container {
+      padding: 15px;
+      margin-top: 15px;
+  }
+
+  h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+  }
+
+  .permission-item {
+      margin-bottom: 8px;
+  }
+
+  button[nz-button] {
+      padding: 10px;
+      font-size: 14px;
+  }
+}
+
+/* Pantallas pequeñas a medianas (teléfonos grandes y tablets en vertical) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .permissions-container {
+      padding: 18px;
+      margin-top: 18px;
+  }
+
+  h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+      text-align: center;
+  }
+
+  .permission-item {
+      margin-bottom: 10px;
+  }
+
+  button[nz-button] {
+      padding: 12px;
+      font-size: 15px;
+  }
+}
+
+/* Pantallas medianas (tablets horizontales y desktops pequeños) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .permissions-container {
+      padding: 20px;
+      margin-top: 20px;
+  }
+
+  h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+  }
+
+  .permission-item {
+      margin-bottom: 12px;
+  }
+
+  button[nz-button] {
+      padding: 14px;
+      font-size: 16px;
+  }
+}
+  

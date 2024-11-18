@@ -1,0 +1,111 @@
+/* Estilos base */
+.register-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.form-container {
+  flex: 1;
+  padding: 40px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-container h2 {
+  color: #0674e2;
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.image-container {
+  flex: 1;
+  display: none; /* Oculto en pantallas pequeñas */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas muy pequeñas (teléfonos en vertical) */
+@media (max-width: 576px) {
+  .register-container {
+      flex-direction: column;
+  }
+
+  .form-container {
+      padding: 20px;
+  }
+
+  .form-container h2 {
+      font-size: 28px;
+  }
+
+  .login-link a {
+      font-size: 14px;
+  }
+}
+
+/* Pantallas pequeñas a medianas (tablets en vertical y teléfonos grandes) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .form-container {
+      padding: 30px;
+  }
+
+  .form-container h2 {
+      font-size: 30px;
+  }
+}
+
+/* Pantallas medianas y grandes (tablets en horizontal y desktop) */
+@media (min-width: 768px) {
+  .image-container {
+      display: block;
+  }
+
+  .form-container {
+      padding: 50px;
+  }
+
+  .form-container h2 {
+      font-size: 34px;
+  }
+}
+
+/* Pantallas muy grandes (desktops amplios) */
+@media (min-width: 992px) {
+  .register-container {
+      max-width: 1200px;
+      margin: auto;
+  }
+
+  .form-container h2 {
+      font-size: 36px;
+  }
+
+  .login-link a {
+      font-size: 16px;
+  }
+}

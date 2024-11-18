@@ -1,0 +1,13 @@
+<h2>Antecedentes del Usuario</h2>
+
+<nz-list [nzDataSource]="antecedentes" [nzRenderItem]="antecedente">
+  <ng-template #antecedente let-item>
+    <nz-list-item>
+      <nz-list-item-meta
+        nzTitle="{{ item.tipo }}"
+        nzDescription="{{ item.detalle }}"
+      >
+      </nz-list-item-meta>
+    </nz-list-item>
+  </ng-template>
+</nz-list>

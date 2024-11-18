@@ -1,0 +1,108 @@
+/* Estilos base */
+.triaje-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+button[nz-button] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas muy pequeñas (teléfonos en vertical) */
+@media (max-width: 576px) {
+  .triaje-container {
+      padding: 15px;
+      margin-top: 15px;
+  }
+
+  .pagination-container {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  table {
+      font-size: 14px;
+      overflow-x: auto; /* Permite desplazamiento horizontal */
+      display: block; /* Hace que la tabla sea desplazable horizontalmente */
+  }
+
+  th,
+  td {
+      padding: 10px;
+  }
+
+  button[nz-button] {
+      width: 100%; /* Botones ocupan todo el ancho en pantallas pequeñas */
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+}
+
+/* Pantallas pequeñas a medianas (teléfonos grandes y tablets en vertical) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .triaje-container {
+      padding: 18px;
+      margin-top: 18px;
+  }
+
+  .pagination-container {
+      flex-direction: row;
+  }
+
+  table {
+      font-size: 15px;
+  }
+
+  th,
+  td {
+      padding: 10px;
+  }
+
+  button[nz-button] {
+      width: auto;
+  }
+}
+
+/* Pantallas medianas a grandes (tablets en horizontal y desktops pequeños) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .triaje-container {
+      padding: 20px;
+      margin-top: 20px;
+  }
+
+  table {
+      font-size: 16px;
+  }
+
+  th,
+  td {
+      padding: 12px;
+  }
+}

@@ -1,0 +1,187 @@
+/* Estilos base para el contenedor de la bitácora */
+.bitacora-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+/* Estilos base para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f4f4f4;
+  border-bottom: 2px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  font-weight: bold;
+  color: #555;
+}
+
+td {
+  color: #666;
+}
+
+/* Filas alternas en la tabla */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover sobre filas de la tabla */
+tbody tr:hover {
+  background-color: #eaeaea;
+}
+
+/* Controles de paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.pagination span {
+  margin: 0 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas muy pequeñas (teléfonos en vertical) */
+@media (max-width: 576px) {
+  .bitacora-container {
+      padding: 15px;
+      margin-top: 15px;
+  }
+
+  h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+  }
+
+  table {
+      font-size: 14px;
+  }
+
+  th, td {
+      padding: 8px;
+  }
+
+  .pagination {
+      flex-direction: column;
+      margin-top: 15px;
+  }
+
+  .pagination button {
+      margin: 5px 0;
+      padding: 6px 10px;
+  }
+
+  .pagination span {
+      font-size: 14px;
+  }
+}
+
+/* Pantallas pequeñas a medianas (tablets en vertical y teléfonos grandes) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .bitacora-container {
+      padding: 18px;
+      margin-top: 18px;
+  }
+
+  h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+  }
+
+  table {
+      font-size: 15px;
+  }
+
+  th, td {
+      padding: 10px;
+  }
+
+  .pagination {
+      margin-top: 18px;
+  }
+
+  .pagination button {
+      padding: 8px 12px;
+  }
+
+  .pagination span {
+      font-size: 15px;
+  }
+}
+
+/* Pantallas medianas en adelante (tablets horizontales y desktops pequeños) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .bitacora-container {
+      padding: 20px;
+      margin-top: 20px;
+  }
+
+  h2 {
+      font-size: 24px;
+  }
+
+  table {
+      font-size: 16px;
+  }
+
+  th, td {
+      padding: 12px;
+  }
+
+  .pagination {
+      margin-top: 20px;
+  }
+
+  .pagination button {
+      padding: 10px 14px;
+  }
+
+  .pagination span {
+      font-size: 16px;
+  }
+}

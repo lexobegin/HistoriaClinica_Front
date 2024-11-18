@@ -1,0 +1,25 @@
+<div class="profile-page">
+    <!-- Tarjeta de Perfil -->
+    <nz-card nzTitle="Perfil de Usuario" class="profile-card">
+      <nz-avatar nzSize="large" nzIcon="user" class="profile-avatar"></nz-avatar>
+      <nz-descriptions [nzColumn]="1" class="profile-descriptions">
+        <nz-descriptions-item nzTitle="ID">{{ id }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="CI">{{ ci }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Nombre">{{ nombre }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Apellido Paterno">{{ apellido_paterno }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Apellido Materno">{{ apellido_materno }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Fecha de Nacimiento">{{ fecha_nacimiento }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Email (Username)">{{ username }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Teléfono">{{ telefono }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Role">{{ role }}</nz-descriptions-item>
+      </nz-descriptions>
+      <button nz-button nzType="primary">Editar Perfil</button>
+    </nz-card>
+  
+    <!-- Tarjeta de Imagen de Perfil -->
+    <nz-card nzTitle="Imagen de Perfil" class="profile-picture-card">
+      <img src="assets/images/profile-picture.jpg" alt="Imagen de perfil" class="profile-picture" />
+      <p>Agrega una foto para ser reconocido fácilmente</p>
+      <button nz-button>Historial Médico</button>
+    </nz-card>
+  </div>

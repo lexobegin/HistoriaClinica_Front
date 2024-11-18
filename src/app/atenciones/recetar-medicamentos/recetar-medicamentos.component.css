@@ -1,0 +1,30 @@
+.recetar-medicamentos-card {
+    margin: 20px;
+  }
+  
+  .medicamentos-seleccionados {
+    margin-top: 20px;
+  }
+  
+  .medicamento-item {
+    margin-bottom: 10px;
+  }
+  
+  .medicamento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nz-form-item {
+    margin-bottom: 10px;
+  }
+  
+  .nz-form-label {
+    width: 100px;
+  }
+  
+  .nz-form-control {
+    flex: 1;
+  }
+  

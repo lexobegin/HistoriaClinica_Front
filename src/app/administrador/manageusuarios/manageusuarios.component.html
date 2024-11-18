@@ -1,0 +1,60 @@
+<div class="usuarios-container">
+    <h2>Administrar Usuarios</h2>
+  
+    <nz-input-group [nzSuffix]="suffixIcon">
+      <input type="text" nz-input placeholder="Buscar por nombre, CI, apellido..." [(ngModel)]="searchTerm" (input)="filterUsuarios()" />
+    </nz-input-group>
+    <ng-template #suffixIcon>
+      <span nz-icon nzType="search"></span>
+    </ng-template>
+  
+    <nz-table
+      #filterTable
+      [nzData]="usuariosFiltrados"
+      [nzPageSize]="itemsPerPage"
+      [nzFrontPagination]="false"
+      [nzPageIndex]="currentPage"
+      (nzPageIndexChange)="onPageChange($event)"
+      [nzTotal]="total"
+      [nzShowPagination]="false"
+    >
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>CI</th>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Género</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuariosFiltrados | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.ci }}</td>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.apellido_paterno }}</td>
+          <td>{{ usuario.apellido_materno }}</td>
+          <td>{{ usuario.fecha_nacimiento | date }}</td>
+          <td>{{ usuario.username }}</td>
+          <td>{{ usuario.telefono || 'No disponible' }}</td>
+          <td>{{ usuario.genero || 'No especificado' }}</td>
+          <td>{{ usuario.estado || 'Inactivo' }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  
+    <!-- Paginación -->
+    <nz-pagination
+      [nzPageIndex]="currentPage"
+      [nzPageSize]="itemsPerPage"
+      [nzTotal]="total"
+      (nzPageIndexChange)="onPageChange($event)"
+      [nzShowSizeChanger]="false"
+    ></nz-pagination>
+  </div>
+  

@@ -1,0 +1,54 @@
+<!-- consulta-medica.component.html -->
+<div class="consulta-medica-container" *ngIf="!isLoading">
+  <h2>Consulta Médica</h2>
+  <p><strong>ID de Consulta:</strong> {{ consultaId }}</p>
+  <p><strong>ID de Cita:</strong> {{ citaId }}</p>
+  <div class="datos-paciente">
+    <h3>Datos del Paciente</h3>
+    <p>
+      <strong>Nombre:</strong> {{ cita.user.nombre }}
+      {{ cita.user.apellido_paterno }} {{ cita.user.apellido_materno }}
+    </p>
+    <p><strong>CI:</strong> {{ cita.user.ci }}</p>
+    <p><strong>Teléfono:</strong> {{ cita.user.telefono }}</p>
+    <!-- Otros datos relevantes -->
+  </div>
+
+  <div class="motivo-consulta">
+    <h3>Motivo de la Consulta</h3>
+    <textarea
+      [(ngModel)]="motivoConsulta"
+      placeholder="Ingrese el motivo de la consulta"
+    ></textarea>
+  </div>
+
+  <nz-tabset>
+    <!-- <nz-tab nzTitle="Antecedentes"> -->
+    <!-- Integrar el componente VerAntecedentesComponent -->
+    <!-- <app-ver-antecedentes [userId]="cita.user.id"></app-ver-antecedentes> -->
+    <!-- </nz-tab> -->
+
+    <nz-tab nzTitle="Diagnóstico">
+      <!-- Formulario para añadir diagnóstico -->
+      <app-anadir-diagnostico [consultaId]="consultaId"></app-anadir-diagnostico>
+    </nz-tab>
+
+    <nz-tab nzTitle="Recetas">
+      <app-recetar-medicamentos [consultaId]="consultaId"></app-recetar-medicamentos>
+    </nz-tab>
+
+    <!-- <nz-tab nzTitle="Solicitar Análisis">
+        
+        <app-solicitar-analisis [citaId]="cita.id"></app-solicitar-analisis>
+      </nz-tab> -->
+    <!-- Puedes añadir más pestañas según sea necesario -->
+  </nz-tabset>
+
+  <button nz-button nzType="primary" (click)="finalizarConsulta()">
+    Finalizar Consulta
+  </button>
+</div>
+
+<div *ngIf="isLoading">
+  <p>Cargando datos de la consulta...</p>
+</div>

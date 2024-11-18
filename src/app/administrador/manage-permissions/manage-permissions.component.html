@@ -1,0 +1,44 @@
+<div class="permissions-container">
+    <h2>Gestionar Permisos</h2>
+    <nz-form [formGroup]="form" nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label>Rol:</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            formControlName="selectedRole"
+            nzPlaceHolder="Selecciona un rol"
+            (ngModelChange)="onRoleChange($event)"
+          >
+            <nz-option
+              *ngFor="let role of roles"
+              [nzLabel]="role.nombre"
+              [nzValue]="role.id"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item *ngIf="selectedRoleId">
+        <nz-form-label>Permisos:</nz-form-label>
+        <nz-form-control>
+          <label nz-checkbox
+            *ngFor="let permission of permissions"
+            [nzChecked]="rolePermissions.includes(permission.id)"
+            (nzCheckedChange)="togglePermission(permission.id, $event)"
+            class="permission-item"
+          >
+            {{ permission.nombre }}
+          </label>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary" (click)="savePermissions()" [disabled]="!selectedRoleId">
+            Guardar
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-form>
+  </div>
+  

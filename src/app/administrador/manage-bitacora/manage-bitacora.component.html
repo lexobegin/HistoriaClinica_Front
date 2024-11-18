@@ -1,0 +1,37 @@
+<div class="bitacora-container">
+    <h2>Bitácora de Actividades</h2>
+    
+    <!-- Tabla de bitácora -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>IP</th>
+          <th>CI</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Acción</th>
+          <th>Tabla Afectada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of paginatedBitacora">
+          <td>{{ registro.id }}</td>
+          <td>{{ registro.ip }}</td>
+          <td>{{ registro.ci }}</td>
+          <td>{{ registro.fecha }}</td>
+          <td>{{ registro.hora }}</td> <!-- Usando DatePipe -->
+          <td>{{ registro.accion }}</td>
+          <td>{{ registro.tablaAfectada }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Controles de paginación -->
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,49 @@
+<div class="especialidades-container">
+  <h2>Gestionar Especialidades</h2>
+
+  <!-- Botón para abrir el modal de creación de especialidad -->
+  <button nz-button nzType="primary" (click)="openCreateModal()">
+    <span nz-icon nzType="plus"></span> Crear Especialidad
+  </button>
+
+  <!-- Tabla de especialidades -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let especialidad of especialidadesPaginadas">
+        <td>{{ especialidad.id }}</td>
+        <td>{{ especialidad.nombre }}</td>
+        <td>
+          <!-- Botones de acción con iconos -->
+          <button nz-button nzType="default" (click)="openEditModal(especialidad)">
+            <span nz-icon nzType="edit"></span>
+          </button>
+          <button nz-button nzType="default" nzDanger (click)="confirmDelete(especialidad.id)">
+            <span nz-icon nzType="delete"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Paginación -->
+  <div class="pagination-container">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+
+  <!-- Modal de Crear/Editar Especialidad -->
+  <nz-modal [(nzVisible)]="isModalVisible" [nzTitle]="modalTitle" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <div *nzModalContent>
+      <label>Nombre de la especialidad:</label>
+      <input nz-input [(ngModel)]="editEspecialidadData.nombre" placeholder="Nombre de la especialidad" />
+    </div>
+  </nz-modal>
+</div>
