@@ -9,10 +9,10 @@
   >
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
-        <img
+        <!--<img
           src="assets/images/electronic_medical_records_logo.jpg"
           alt="logo"
-        />
+        />-->
         <h1>Seguro “SSVS”</h1>
       </a>
     </div>
@@ -108,7 +108,7 @@
       </li>
 
       <!-- Sección para CONFIGURACIÓN, visible para ADMIN y MEDICO -->
-      <li
+      <!--<li
         *ngIf="isAdmin() || isMedico()"
         nz-submenu
         nzTitle="Configuración"
@@ -120,9 +120,10 @@
           </li>
         </ul>
       </li>
+    -->
 
       <!-- Sección para ATENCIONES MÉDICAS, visible para varios roles -->
-      <li
+      <!--<li
         *ngIf="isAdmin() || isMedico() || isEspecialista() || isEnfermero()"
         nz-submenu
         nzTitle="Atenciones Médicas"
@@ -146,7 +147,7 @@
           </li>
         </ul>
       </li>
-    </ul>
+    --></ul>
   </nz-sider>
 
   <nz-layout>
@@ -170,12 +171,14 @@
             [nzPopoverContent]="menuTemplate"
             class="user-action"
           >
-            <nz-avatar
+            <!--<nz-avatar
               nzSize="small"
               nzSrc="assets/images/modern_user_profile_logo.jpg"
               nzIcon="user"
-            ></nz-avatar>
-            <span class="user-name">Hello {{ userName }} 👋</span>
+            ></nz-avatar>-->
+            <span class="user-name">
+              {{ userName }} {{ userPaterno }} {{ userMaterno }}</span
+            >
           </a>
           <ng-template #menuTemplate>
             <ul nz-menu>
