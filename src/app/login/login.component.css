@@ -12,6 +12,7 @@ body, html {
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+  background-color: #0e2e4e !important;
 }
 
 /* Contenedor del formulario */
@@ -26,7 +27,7 @@ body, html {
 }
 
 .form-container h2 {
-  color: #0674e2;
+  color: #141414;
   margin-bottom: 20px;
   font-size: 32px;
   font-weight: 500;
@@ -59,6 +60,7 @@ body, html {
 .image-container {
   flex: 1;
   display: none; /* Oculto en pantallas pequeñas */
+  background-color: #0e2e4e !important;
 }
 
 .image-container img {
