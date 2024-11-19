@@ -30,13 +30,19 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 export class MainLayoutComponent implements OnInit {
   isCollapsed = false;
   userName = 'Usuario';
+  userPaterno = '';
+  userMaterno = '';
   userRole: string | null = null;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    console.log('USERRRR:', user);
+    
     this.userName = user.nombre || 'Usuario';
+    this.userPaterno = user.apellido_paterno || '';
+    this.userMaterno = user.apellido_materno || '';
     this.userRole = user.role || null; // Asignamos el rol del usuario
   }
 
