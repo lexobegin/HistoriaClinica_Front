@@ -21,6 +21,8 @@ import { VerAntecedentesComponent } from './atenciones/ver-antecedentes/ver-ante
 
 import { ManageAtencionesMedicoComponent } from './atenciones/manage-atenciones-medico/manage-atenciones-medico.component';
 import { ConsultaMedicaComponent } from './atenciones/consulta-medica/consulta-medica.component';
+
+
 export const routes: Routes = [
   // Ruta para el HomeComponent sin navbar
   { path: '', component: HomeComponent },

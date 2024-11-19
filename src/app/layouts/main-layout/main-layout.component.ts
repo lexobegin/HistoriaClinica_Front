@@ -61,6 +61,10 @@ export class MainLayoutComponent implements OnInit {
     return this.userRole === 'ENFERMERO';
   }
 
+  isPaciente(): boolean {
+    return this.userRole === 'PACIENTE';
+  }
+
   goToProfile(): void {
     this.router.navigate(['/perfil']);
   }

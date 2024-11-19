@@ -9,57 +9,111 @@
   >
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
-        <img src="assets/images/electronic_medical_records_logo.jpg" alt="logo" />
-        <h1>SSVS</h1>
+        <img
+          src="assets/images/electronic_medical_records_logo.jpg"
+          alt="logo"
+        />
+        <h1>Seguro “SSVS”</h1>
       </a>
     </div>
 
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      
-      <!-- Sección para ADMINISTRADOR -->
-      <li *ngIf="isAdmin()" nz-submenu nzOpen nzTitle="Administrador" nzIcon="dashboard">
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <!-- Sección para ADMINISTRATIVO -->
+      <li
+        *ngIf="isAdmin()"
+        nz-submenu
+        nzOpen
+        nzTitle="ADMINISTRATIVO"
+        nzIcon="dashboard"
+      >
         <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/administrador/usuarios">Usuarios</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item>
             <a routerLink="/administrador/roles">Roles</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item>
             <a routerLink="/administrador/permisos">Permisos</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item>
+            <a routerLink="/administrador/usuarios">Usuarios</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/registro/especialidades">Especialidades</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/personal/empleados">Médicos</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/configuracion/medicos">Horarios</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/atenciones/paciente">Pacientes</a>
+          </li>
+          <li nz-menu-item>
             <a routerLink="/administrador/bitacora">Bitácora</a>
           </li>
         </ul>
       </li>
 
       <!-- Sección para REGISTROS, visible para ADMIN y SECRETARIO -->
-      <li *ngIf="isAdmin() || isSecretario()" nz-submenu nzTitle="Registros" nzIcon="file-text">
+      <li
+        *ngIf="isAdmin() || isMedico()"
+        nz-submenu
+        nzTitle="ATENCION MEDICA"
+        nzIcon="file-text"
+      >
         <ul>
-          <li nz-menu-item>
-            <a routerLink="/registro/especialidades">Gestionar Especialidades</a>
+          <!--<li nz-menu-item>
+            <a routerLink="/registro/especialidades"
+              >Gestionar Especialidades</a
+            >
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/registro/departamentos">Gestionar Departamentos</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/registro/servicios">Gestionar Servicios</a>
+          </li>-->
+          <li nz-menu-item>
+            <a routerLink="/atenciones/triaje">Pre Consulta</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="atenciones/atencines_realizara_medico">Consultas</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/atenciones/Historial-Paciente">Historial Clínico</a>
           </li>
         </ul>
       </li>
 
       <!-- Sección para PERSONAL, visible para ADMIN y MEDICO -->
-      <li *ngIf="isAdmin() || isMedico()" nz-submenu nzTitle="Personal" nzIcon="team">
+      <li
+        *ngIf="isAdmin() || isPaciente()"
+        nz-submenu
+        nzTitle="FICHA"
+        nzIcon="team"
+      >
         <ul>
           <li nz-menu-item>
-            <a routerLink="/personal/empleados">Gestionar Empleados</a>
+            <a routerLink="/citas-medicas">Sacar Ficha</a>
           </li>
+          <!--<li nz-menu-item>
+            <a routerLink="/personal/empleados">Gestionar Empleados</a>
+          </li>-->
         </ul>
       </li>
 
       <!-- Sección para CONFIGURACIÓN, visible para ADMIN y MEDICO -->
-      <li *ngIf="isAdmin() || isMedico()" nz-submenu nzTitle="Configuración" nzIcon="setting">
+      <li
+        *ngIf="isAdmin() || isMedico()"
+        nz-submenu
+        nzTitle="Configuración"
+        nzIcon="setting"
+      >
         <ul>
           <li nz-menu-item>
             <a routerLink="/configuracion/medicos">Programación de Médicos</a>
@@ -68,7 +122,12 @@
       </li>
 
       <!-- Sección para ATENCIONES MÉDICAS, visible para varios roles -->
-      <li *ngIf="isAdmin() || isMedico() || isEspecialista() || isEnfermero()" nz-submenu nzTitle="Atenciones Médicas" nzIcon="medicine-box">
+      <li
+        *ngIf="isAdmin() || isMedico() || isEspecialista() || isEnfermero()"
+        nz-submenu
+        nzTitle="Atenciones Médicas"
+        nzIcon="medicine-box"
+      >
         <ul>
           <li nz-menu-item>
             <a routerLink="/atenciones/paciente">Pacientes</a>
@@ -87,7 +146,6 @@
           </li>
         </ul>
       </li>
-
     </ul>
   </nz-sider>
 
@@ -96,7 +154,11 @@
       <div class="app-header">
         <div class="left-section">
           <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+            <span
+              class="trigger"
+              nz-icon
+              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></span>
           </span>
         </div>
         <div class="right-section">
@@ -108,7 +170,11 @@
             [nzPopoverContent]="menuTemplate"
             class="user-action"
           >
-            <nz-avatar nzSize="small" nzSrc="assets/images/modern_user_profile_logo.jpg" nzIcon="user"></nz-avatar>
+            <nz-avatar
+              nzSize="small"
+              nzSrc="assets/images/modern_user_profile_logo.jpg"
+              nzIcon="user"
+            ></nz-avatar>
             <span class="user-name">Hello {{ userName }} 👋</span>
           </a>
           <ng-template #menuTemplate>
